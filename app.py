@@ -10,8 +10,9 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 if not SUPABASE_URL or not SUPABASE_KEY:
     st.error("❌ Missing Supabase credentials. Please set SUPABASE_URL and SUPABASE_KEY in .env")
-else:
-    supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+    st.stop()
+
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # ------------------------------
 # Streamlit Config
@@ -74,3 +75,4 @@ with tab2:
                 st.error("❌ Could not create account")
         except Exception as e:
             st.error(f"Error: {e}")
+
